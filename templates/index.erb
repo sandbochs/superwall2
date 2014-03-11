@@ -11,11 +11,31 @@
   </form>
 </div>
 <ol class="post-list">
+  <!--  go through all the objects named post in posts -->
   <% posts.each do |post| %>
     <li>
       <!-- Read http://www.ruby-doc.org/core-2.1.1/Time.html#method-i-strftime 
            for information about how this strftime voodoo works -->
+           <!--get the created time of the post object -->
       <p><%= post.created_at.strftime('%A, %B %-d, %Y') %></p>
+      <p>
+        <strong>Votes</strong><%=post.votes %>
+        <form action = "/posts/<%= post.id %>/upvote" method = "post">
+          <input type = "submit" value = "UpVote!">
+        </form>
+
+        <form action="/posts/<%=post.id %>/downvote" method = "post">
+          <input type ="submit" value = "Downvote!">
+        </form>
+
+         <form action="/posts/<%=post.id %>/delete" method = "post">
+          <input type ="submit" value = "Delete Post">
+        </form>
+ <!--        <button action="/posts/<%=post.id%>/delete" method = "post" type="submit">Delete Post</button>
+ -->
+        
+      </p>
+
       <!-- What does "escape" do here?  What happens if you remove it? -->
       <!-- Try creating a post that contains HTML and see how that post looks
            with and without the call to escape() -->
