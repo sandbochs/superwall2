@@ -6,6 +6,8 @@ Sequel.migration do
     	# define the attributes of the database
       primary_key :id
       text :body, :null => false
+      #url links
+      string :url
       datetime :created_at, :null => false
       datetime :updated_at, :null => false
       int :votes, :default => 0

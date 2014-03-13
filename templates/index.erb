@@ -2,9 +2,14 @@
 
 <div id="post-form">
   <form action="/posts" method="post">
-    <div>
-      <textarea name="body"></textarea>
+    <div class = "container">
+      <input type="text" name="url" placeholder = "Image URL {optional}">
     </div>
+    <div class = "container">
+      <textarea name = "body" placeholder = "Message goes in here"></textarea>
+
+    </div>
+
     <div>
       <input type="submit" value="Post">
     </div>
@@ -33,13 +38,21 @@
         </form>
  <!--        <button action="/posts/<%=post.id%>/delete" method = "post" type="submit">Delete Post</button>
  -->
+         <form action="posts/<%=post.id %>/edit" method = "post">
+          <textarea name = "Edit"></textarea>
+          <input type ="submit" value = "Edit">
+        </form>
+
+        <% if post.url.length > 0 %>
+        <img src = "<%= post.url %> ">
+        <% end %>
         
       </p>
 
       <!-- What does "escape" do here?  What happens if you remove it? -->
       <!-- Try creating a post that contains HTML and see how that post looks
            with and without the call to escape() -->
-      <p><%= escape(post.body) %></p>
+      <p><%= url_escape(post.body) %></p>
     </li>
   <% end %>
 </ol>

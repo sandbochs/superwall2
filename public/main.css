@@ -31,3 +31,14 @@ body {
 #content {
   font
 }
+
+img {
+  max-width: screen.width * 0.5;
+  max-height: 400px;
+}
+
+div.container {
+  padding-top: 20px;
+}
+
+

@@ -13,7 +13,9 @@ end
 
 #creates the posts object in the database then redirect it to the home directory
 post '/posts' do
-  Post.create(:body => params[:body])
+	#create a url in the body
+  Post.create(:body => params[:body], :url=>params[:url])
+  
   redirect to('/')
 end
 
@@ -37,6 +39,14 @@ post '/posts/:id/delete' do
 	post.delete
 	redirect to("/")
 end
+
+post '/posts/:id/edit' do
+	post = Post.where(:id => params[:id]).first
+	post.body = params[:Edit]
+	post.save
+	redirect to("/")
+end
+
 
 
 #use the link to get the file then render the contents
